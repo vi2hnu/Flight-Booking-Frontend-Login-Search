@@ -11,6 +11,6 @@ export class Search {
     constructor(private http: HttpClient) {}
 
     searchFlight(searchModel: searchModel) {
-        return this.http.post<any>(this.apiUrl, searchModel);
+        return this.http.post<any>(this.apiUrl, searchModel, { withCredentials: true });
     }
 }

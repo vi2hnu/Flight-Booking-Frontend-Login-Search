@@ -1,1 +1,79 @@
 <h1>Search page</h1>
+
+<form #searchForm="ngForm" (ngSubmit)="searchForm.valid && search()">
+
+  <label>From City:</label>
+  <select
+    name="fromCityCode"
+    [(ngModel)]="searchModel.fromCityCode"
+    required>
+    <option value="">Select</option>
+    <option value="MAA">Chennai (MAA)</option>
+    <option value="BOM">Mumbai (BOM)</option>
+    <option value="DEL">Delhi (DEL)</option>
+    <option value="BLR">Bengaluru (BLR)</option>
+    <option value="HYD">Hyderabad (HYD)</option>
+  </select>
+
+  <br><br>
+
+  <label>To City:</label>
+  <select
+    name="toCityCode"
+    [(ngModel)]="searchModel.toCityCode"
+    required>
+    <option value="">Select</option>
+    <option value="MAA">Chennai (MAA)</option>
+    <option value="BOM">Mumbai (BOM)</option>
+    <option value="DEL">Delhi (DEL)</option>
+    <option value="BLR">Bengaluru (BLR)</option>
+    <option value="HYD">Hyderabad (HYD)</option>
+  </select>
+
+  <br><br>
+
+  <label>Date:</label>
+  <input
+    type="date"
+    name="date"
+    [(ngModel)]="searchModel.date"
+    required>
+
+  <br><br>
+
+  <button type="submit" [disabled]="searchForm.invalid">
+    Search
+  </button>
+</form>
+
+@if (flights.length > 0) {
+  <h2>Available Flights</h2>
+
+  <table border="1">
+    <tr>
+      <th>Airline</th>
+      <th>Flight</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th>Price</th>
+      <th>Seats</th>
+    </tr>
+
+    @for (flight of flights; track flight.id) {
+      <tr>
+        <td>{{ flight.flight.airline.airlineName }}</td>
+        <td>{{ flight.flight.name }}</td>
+        <td>{{ flight.fromCity.cityName }}</td>
+        <td>{{ flight.toCity.cityName }}</td>
+        <td>{{ flight.departureDate }}</td>
+        <td>{{ flight.departureTime }}</td>
+        <td>{{ flight.duration }} min</td>
+        <td>{{ flight.price }}</td>
+        <td>{{ flight.seatsAvailable }}</td>
+      </tr>
+    }
+  </table>
+}
