@@ -1,15 +1,13 @@
 <h1>Login page</h1>
 <div>
-
-
-  <form (ngSubmit)="login()">
+  <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
     <label for="username">Username:</label>
     <input type="text" [(ngModel)] = "loginModel.username" id="username" name="username" required>
-
+    <br>
     <label for="Password">Password:</label>
     <input type="password" [(ngModel)] = "loginModel.password" id="password" name="password" required>
-
-    <button type="submit">Login</button>
+    <br>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
 </div>
 <p>New user? <a routerLink="/register">Register here</a></p>
