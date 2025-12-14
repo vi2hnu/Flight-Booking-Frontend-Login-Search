@@ -1,0 +1,42 @@
+<h1>Registration page</h1>
+
+<form #registerForm="ngForm" (ngSubmit)=" registerForm.valid && register()">
+    <label for="username">Username:</label>
+    <input type="text" [(ngModel)] = "registerModel.username" id="username" name="username" required>
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" [(ngModel)] = "registerModel.email" 
+    id="email" name="email" required pattern="^[^@]+@[^@]+\.[^@]+$" #email="ngModel">
+    <br>
+    @if(email.invalid && email.touched){
+      <p>Please enter a valid email address.</p>
+    }
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" [(ngModel)] = "registerModel.password" 
+    id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel">
+    <br>
+    @if(password.invalid && password.touched){
+      <p>Password must be at least 8 characters long and contain at least one letter and one number.</p>
+    }
+    <br>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+<p>Already have an account? <a routerLink="/login">Login here</a></p>
+
+
+@if(registerError){
+  <div>
+    <p>{{errorMessage}}</p>
+    <button (click)="hidePopUp()">Ok</button>
+  </div>      
+}
+
+
+@if(registerSuccess){
+  <div>
+    <p>Login successsfull please login using the same credentials</p>
+    <button (click)="redirectToLogin()">Login</button>
+  </div>      
+}
