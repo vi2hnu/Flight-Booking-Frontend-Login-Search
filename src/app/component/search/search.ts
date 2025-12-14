@@ -15,6 +15,8 @@ export class Search {
 
   searchModel: SearchModel = new SearchModel();
   flights: any[] = [];
+  errorMessage: string = '';
+  fetchError: boolean = false;
 
   private searchService = inject(SearchService);
 
@@ -24,6 +26,13 @@ export class Search {
         this.flights = response;
       },
       (error) => {
+        this.fetchError = true;
+        if(error.status === 401){
+          this.errorMessage = "Unauthorized access. Please login.";
+        }
+        else{
+          this.errorMessage = 'Internal Server Error. Please try again later.';
+        }
         console.error('Search failed', error);
       }
     );
