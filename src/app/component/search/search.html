@@ -58,7 +58,7 @@
 
           <div class="flight-middle row">
             <p><strong>Date:</strong> {{ flight.departureDate }}</p>
-            <p><strong>Dep:</strong> {{ flight.departureTime }} | <strong>Dur:</strong> {{ flight.duration }}m</p>
+            <p><strong>Dep:</strong> {{ flight.departureTime | date:'HH:mm' }} | <strong>Dur:</strong> {{ flight.duration }}m</p>
           </div>
 
           <div class="flight-bottom row">
