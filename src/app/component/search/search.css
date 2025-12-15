@@ -43,6 +43,8 @@ body {
   align-items: center;
   gap: 30px;
   padding-bottom: 50px;
+  min-height: calc(100vh - 70px); 
+  box-sizing: border-box;
 }
 
 .search-box {
