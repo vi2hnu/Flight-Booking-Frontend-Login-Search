@@ -149,3 +149,7 @@ body {
   opacity: 0.9;
   pointer-events: none;
 }
+
+.login-heading{
+    color:#DDDDDD
+}

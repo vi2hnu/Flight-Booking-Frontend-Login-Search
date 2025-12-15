@@ -2,8 +2,9 @@
 
 <div class="login-page">
   <div class="login-box">
+    <h1 class="login-heading">Login</h1>
     <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()" class="login-form">
-
+      
       <div class="form-group">
         <label for="username">Username</label>
         <input
@@ -35,7 +36,6 @@
     </form>
   </div>
 </div>
-
 
 
 @if (loginError) {
