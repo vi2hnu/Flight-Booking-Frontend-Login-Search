@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Search as SearchModel } from '../../model/search/search.model';
 import { Search as SearchService } from '../../service/search/search';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-search',
@@ -19,6 +20,7 @@ export class Search {
   fetchError: boolean = false;
   hasClickedeSearch: boolean = false;
   today:string = new Date().toISOString().split('T')[0];
+  private router = inject(Router);
 
   private searchService = inject(SearchService);
 
@@ -50,5 +52,10 @@ export class Search {
   hideError() {
     this.fetchError = false;
     this.errorMessage = '';
+  }
+
+  logout() {
+    this.searchService.logout();
+    this.router.navigate(['/login']);
   }
 }
