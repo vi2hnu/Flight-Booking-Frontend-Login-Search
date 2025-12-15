@@ -1,7 +1,12 @@
 <header class="header">
-  <h1 class="brand-title">FlightBooking</h1>
+  <div class="header-left">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <h1 class="brand-title">FlightBooking</h1>
+  </div>
+
   <button class="logout-btn" (click)="logout()">Logout</button>
 </header>
+
 <div class="search-page">
   <div class="search-box">
     <br>
@@ -77,6 +82,9 @@
     </div>
   }
 
+  @if(flights.length ==0){
+    <h1> Try booking tickets in advance to save money</h1>
+  }
 
   @if(fetchError){
     <div class="popup-overlay">

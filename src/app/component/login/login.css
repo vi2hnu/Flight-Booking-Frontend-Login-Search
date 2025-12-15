@@ -8,20 +8,31 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-.brand-title {
-  position: fixed;
-  top: 20px;
-  left: 30px;
-  font-size: 36px;
-  font-weight: 700;
-  color: #222831;
-  margin: 0;
-  z-index: 1;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ececd3;
+  padding: 15px 30px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .login-page {
   height: 100vh;
   display: flex;
+  margin-top: -4%;
   justify-content: center;
   align-items: center;
   background-color: #ececd3;
@@ -35,6 +46,12 @@ body {
   z-index: 1;
 }
 
+.brand-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222831;
+  margin: 0;
+}
 
 .login-form {
   display: flex;
@@ -156,7 +173,7 @@ body {
   position: fixed;
 
   left: -8vw;
-  top: -40px;
+  top: 90px;
 
   width: 45vw;
   height: 500px;
