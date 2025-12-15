@@ -16,29 +16,31 @@ body {
   font-weight: 700;
   color: #222831;
   margin: 0;
+  z-index: 1;
 }
 
-.login-page {
+.register-page {
   height: 100vh;
   display: flex;
-  background-color: #F5F5DC;
+  background-color: #ececd3;
   justify-content: center;
   align-items: center;
 }
 
-.login-box {
+.register-box {
   background-color: #222831;
   padding: 50px 40px;
   width: 400px;
   border-radius: 12px;
+  z-index: 1;
 }
 
-.login-heading {
+.register-heading {
   color: #DDDDDD;
   margin-bottom: 24px;
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -139,4 +141,32 @@ body {
   cursor: pointer;
   background-color: #F05454;
   color: white;
+}
+
+.plane-image {
+  position: fixed;
+
+  left: -8vw;
+  bottom: -40px;
+
+  width: 45vw;
+  height: 500px;
+
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.plane-down-image {
+  position: fixed;
+
+  right: -6vw;
+  top: -40px;
+  
+  width: 45vw;
+  height: 500px;
+
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
 }

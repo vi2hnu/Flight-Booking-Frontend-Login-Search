@@ -1,9 +1,10 @@
 <h1 class="brand-title">FlightBooking</h1>
 
-<div class="login-page">
-  <div class="login-box">
-    <h1 class="login-heading">Register</h1>
-    <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register()" class="login-form">
+<div class="register-page">
+  <img src="assets/aeroplane-facing-up.png" alt="" class="plane-image">
+  <div class="register-box">
+    <h1 class="register-heading">Register</h1>
+    <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register()" class="register-form">
 
       <div class="form-group">
         <label for="username">Username</label>
@@ -59,6 +60,7 @@
 
     </form>
   </div>
+  <img src="assets/aeroplane-facing-down.png" alt="" class="plane-down-image">
 </div>
 
 @if(registerError){
