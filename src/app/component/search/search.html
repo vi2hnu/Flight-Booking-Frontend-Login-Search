@@ -1,77 +1,85 @@
-<h1>Search page</h1>
+<header class="header">
+  <h1 class="brand-title">FlightBooking</h1>
+  <button class="logout-btn">Logout</button>
+</header>
+<div class="search-page">
+  <div class="search-box">
+    <br>
+    <form #searchForm="ngForm" (ngSubmit)="searchForm.valid && search()" class="search-form">
 
-<form #searchForm="ngForm" (ngSubmit)="searchForm.valid && search()">
+      <div class="search-field">
+        <label>From City:</label>
+        <select name="fromCityCode" [(ngModel)]="searchModel.fromCityCode" required>
+          <option value="">Select</option>
+          <option value="MAA">Chennai (MAA)</option>
+          <option value="BOM">Mumbai (BOM)</option>
+          <option value="DEL">Delhi (DEL)</option>
+          <option value="BLR">Bengaluru (BLR)</option>
+          <option value="HYD">Hyderabad (HYD)</option>
+        </select>
+      </div>
 
-  <label>From City:</label>
-  <select
-    name="fromCityCode"
-    [(ngModel)]="searchModel.fromCityCode"
-    required>
-    <option value="">Select</option>
-    <option value="MAA">Chennai (MAA)</option>
-    <option value="BOM">Mumbai (BOM)</option>
-    <option value="DEL">Delhi (DEL)</option>
-    <option value="BLR">Bengaluru (BLR)</option>
-    <option value="HYD">Hyderabad (HYD)</option>
-  </select>
+      <div class="search-field">
+        <label>To City:</label>
+        <select name="toCityCode" [(ngModel)]="searchModel.toCityCode" required>
+          <option value="">Select</option>
+          <option value="MAA">Chennai (MAA)</option>
+          <option value="BOM">Mumbai (BOM)</option>
+          <option value="DEL">Delhi (DEL)</option>
+          <option value="BLR">Bengaluru (BLR)</option>
+          <option value="HYD">Hyderabad (HYD)</option>
+        </select>
+      </div>
 
-  <br><br>
+      <div class="search-field">
+        <label>Date:</label>
+        <input type="date" name="date" [(ngModel)]="searchModel.date" [min]="today" required>
+      </div>
 
-  <label>To City:</label>
-  <select
-    name="toCityCode"
-    [(ngModel)]="searchModel.toCityCode"
-    required>
-    <option value="">Select</option>
-    <option value="MAA">Chennai (MAA)</option>
-    <option value="BOM">Mumbai (BOM)</option>
-    <option value="DEL">Delhi (DEL)</option>
-    <option value="BLR">Bengaluru (BLR)</option>
-    <option value="HYD">Hyderabad (HYD)</option>
-  </select>
+      <div class="search-field">
+        <button type="submit" [disabled]="searchForm.invalid" class="search-btn">
+          Search
+        </button>
+      </div>
 
-  <br><br>
+    </form>
+  </div>
 
-  <label>Date:</label>
-  <input
-    type="date"
-    name="date"
-    [(ngModel)]="searchModel.date"
-    [min]="today"
-    required>
+  @if(flights.length > 0) {
+    <h2 class="flights-heading">Available Flights</h2>
+    <div class="flights-container">
+      @for(flight of flights; track flight.id){
+        <div class="flight-card">
+          
+          <div class="flight-top row">
+            <p class="from-city"><strong>From:</strong> {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode}})</p>
+            <p class="to-city"><strong>To:</strong> {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode}})</p>
+          </div>
 
-  <br><br>
+          <div class="flight-middle row">
+            <p><strong>Date:</strong> {{ flight.departureDate }}</p>
+            <p><strong>Dep:</strong> {{ flight.departureTime }} | <strong>Dur:</strong> {{ flight.duration }}m</p>
+          </div>
 
-  <button type="submit" [disabled]=" searchForm.invalid">
-    Search
-  </button>
-</form>
+          <div class="flight-bottom row">
+            <p><strong>Seats:</strong> {{ flight.seatsAvailable }}</p>
+            <p class="price"><strong>Price:</strong> Rs. {{ flight.price }}</p>
+          </div>
 
-@if(hasClickedeSearch && flights.length == 0) {
-  <p>No flights found between the selected cities on that date.</p>
-}
-
-
-@if (hasClickedeSearch && flights.length > 0) {
-  <h2>Available Flights</h2>
-    <div> 
-      @for (flight of flights; track flight.id) {
-        <div>
-          <p>Flight Name: {{ flight.flight.name }}</p>
-          <p>Airline: {{ flight.flight.airline.airlineName }}</p>
-          <p>From: {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode}})</p>
-          <p>To: {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode}})</p>
-          <p>Date: {{ flight.departureDate }}</p>
-          <p>Departure Time: {{ flight.departureTime }}</p>
-          <p>Price: Rs. {{ flight.price }}</p>
-          <p>Seats Available: {{ flight.seatsAvailable }}</p>
-          <hr>
+          <button class="book-btn">Book Ticket</button>
         </div>
       }
     </div>
-}
+  }
 
-@if(fetchError) {
-  <p>{{errorMessage}}</p>
-  <button (click)="hideError()">Ok</button>
-}
+
+  @if(fetchError){
+    <div class="popup-overlay">
+      <div class="popup-box">
+        <h2>{{ errorMessage }}</h2>
+        <button class="popup-btn" (click)="hideError()">Ok</button>
+      </div>
+    </div>
+  }
+
+</div>

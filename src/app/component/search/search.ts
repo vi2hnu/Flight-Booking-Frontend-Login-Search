@@ -23,13 +23,15 @@ export class Search {
   private searchService = inject(SearchService);
 
   search() {
-    this.hasClickedeSearch = true;
     this.flights = [];
 
-    
     this.searchService.searchFlight(this.searchModel).subscribe(
       (response) => {
         this.flights = response;
+        if(this.flights.length === 0){
+          this.fetchError = true;
+          this.errorMessage = 'No flights found for the given criteria.';
+        }
       },
       (error) => {
         this.fetchError = true;
