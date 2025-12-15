@@ -16,7 +16,7 @@ export class Login {
   loginService = inject(LoginService);
   loginError: boolean = false;
   errorMessage: string = '';
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
 
   login() {

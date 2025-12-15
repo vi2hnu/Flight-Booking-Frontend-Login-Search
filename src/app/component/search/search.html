@@ -13,7 +13,7 @@
     <form #searchForm="ngForm" (ngSubmit)="searchForm.valid && search()" class="search-form">
 
       <div class="search-field">
-        <label>From City:</label>
+        <label for="fromCityCode">From City:</label>
         <select name="fromCityCode" [(ngModel)]="searchModel.fromCityCode" required>
           <option value="">Select</option>
           <option value="MAA">Chennai (MAA)</option>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="search-field">
-        <label>To City:</label>
+        <label for="toCityCode">To City:</label>
         <select name="toCityCode" [(ngModel)]="searchModel.toCityCode" required>
           <option value="">Select</option>
           <option value="MAA">Chennai (MAA)</option>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="search-field">
-        <label>Date:</label>
+        <label for="date">Date:</label>
         <input type="date" name="date" [(ngModel)]="searchModel.date" [min]="today" required>
       </div>
 

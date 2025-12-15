@@ -20,9 +20,9 @@ export class Search {
   fetchError: boolean = false;
   hasClickedeSearch: boolean = false;
   today:string = new Date().toISOString().split('T')[0];
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
-  private searchService = inject(SearchService);
+  private readonly searchService = inject(SearchService);
 
   search() {
     this.flights = [];

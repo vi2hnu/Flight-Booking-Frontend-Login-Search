@@ -6,8 +6,8 @@ import { Search as searchModel} from '../../model/search/search.model';
   providedIn: 'root',
 })
 export class Search {
-    private apiUrl = 'http://localhost:9000';
-    constructor(private http: HttpClient) {}
+    private readonly apiUrl = 'http://localhost:9000';
+    constructor(private readonly http: HttpClient) {}
 
     searchFlight(searchModel: searchModel) {
         return this.http.post<any>(this.apiUrl+'/flightservice/api/flight/search', searchModel, { withCredentials: true });

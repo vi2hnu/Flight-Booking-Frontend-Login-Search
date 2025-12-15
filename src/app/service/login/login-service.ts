@@ -6,9 +6,9 @@ import { LoginModel } from '../../model/login/login-model.model';
   providedIn: 'root',
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:9000/authservice/api/auth/signIn';
+  private readonly apiUrl = 'http://localhost:9000/authservice/api/auth/signIn';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   login(loginModel: LoginModel){
     return this.http.post<any>(this.apiUrl, loginModel,{ withCredentials: true });
