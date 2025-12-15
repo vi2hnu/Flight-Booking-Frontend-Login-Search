@@ -172,7 +172,7 @@ body {
   color: white;
   cursor: pointer;
   margin-top: 15px; 
-  width: 100%;
+  width: 30%;
   transition: background-color 0.3s;
 }
 
@@ -221,4 +221,11 @@ body {
 
 .popup-btn:hover {
   background-color: #d94545;
+}
+
+.flight-airline {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  padding-bottom: 8px;
 }

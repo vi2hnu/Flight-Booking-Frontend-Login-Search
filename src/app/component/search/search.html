@@ -50,14 +50,19 @@
     <div class="flights-container">
       @for(flight of flights; track flight.id){
         <div class="flight-card">
-          
+
           <div class="flight-top row">
-            <p class="from-city"><strong>From:</strong> {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode}})</p>
-            <p class="to-city"><strong>To:</strong> {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode}})</p>
+            <p class="from-city"><strong>From:</strong> {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode }})</p>
+            <p class="to-city"><strong>To:</strong> {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode }})</p>
+          </div>
+
+          <div class="flight-airline row">
+            <p><strong>Airline:</strong> {{ flight.flight.airline.airlineName }}</p>
+            <p><strong>Flight:</strong> {{ flight.flight.name }}</p>
           </div>
 
           <div class="flight-middle row">
-            <p><strong>Date:</strong> {{ flight.departureDate }}</p>
+            <p><strong>Date:</strong> {{ flight.departureDate | date:'yyyy-MM-dd' }}</p>
             <p><strong>Dep:</strong> {{ flight.departureTime | date:'HH:mm' }} | <strong>Dur:</strong> {{ flight.duration }}m</p>
           </div>
 
