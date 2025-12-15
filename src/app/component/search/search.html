@@ -54,34 +54,21 @@
 
 @if (hasClickedeSearch && flights.length > 0) {
   <h2>Available Flights</h2>
-
-  <table border="1">
-    <tr>
-      <th>Airline</th>
-      <th>Flight</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Duration</th>
-      <th>Price</th>
-      <th>Seats</th>
-    </tr>
-
-    @for (flight of flights; track flight.id) {
-      <tr>
-        <td>{{ flight.flight.airline.airlineName }}</td>
-        <td>{{ flight.flight.name }}</td>
-        <td>{{ flight.fromCity.cityName }}</td>
-        <td>{{ flight.toCity.cityName }}</td>
-        <td>{{ flight.departureDate }}</td>
-        <td>{{ flight.departureTime }}</td>
-        <td>{{ flight.duration }} min</td>
-        <td>{{ flight.price }}</td>
-        <td>{{ flight.seatsAvailable }}</td>
-      </tr>
-    }
-  </table>
+    <div> 
+      @for (flight of flights; track flight.id) {
+        <div>
+          <p>Flight Name: {{ flight.flight.name }}</p>
+          <p>Airline: {{ flight.flight.airline.airlineName }}</p>
+          <p>From: {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode}})</p>
+          <p>To: {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode}})</p>
+          <p>Date: {{ flight.departureDate }}</p>
+          <p>Departure Time: {{ flight.departureTime }}</p>
+          <p>Price: Rs. {{ flight.price }}</p>
+          <p>Seats Available: {{ flight.seatsAvailable }}</p>
+          <hr>
+        </div>
+      }
+    </div>
 }
 
 @if(fetchError) {
