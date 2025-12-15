@@ -1,42 +1,79 @@
-<h1>Registration page</h1>
+<h1 class="brand-title">FlightBooking</h1>
 
-<form #registerForm="ngForm" (ngSubmit)=" registerForm.valid && register()">
-    <label for="username">Username:</label>
-    <input type="text" [(ngModel)] = "registerModel.username" id="username" name="username" required>
-    <br>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" [(ngModel)] = "registerModel.email" 
-    id="email" name="email" required pattern="^[^@]+@[^@]+\.[^@]+$" #email="ngModel">
-    <br>
-    @if(email.invalid && email.touched){
-      <p>Please enter a valid email address.</p>
-    }
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" [(ngModel)] = "registerModel.password" 
-    id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel">
-    <br>
-    @if(password.invalid && password.touched){
-      <p>Password must be at least 8 characters long and contain at least one letter and one number.</p>
-    }
-    <br>
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
-</form>
-<button (click)="redirectToLogin()">Already have an account</button>
+<div class="login-page">
+  <div class="login-box">
+    <h1 class="login-heading">Register</h1>
+    <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && register()" class="login-form">
 
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="registerModel.username"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="registerModel.email"
+          required
+          pattern="^[^@]+@[^@]+\.[^@]+$"
+          #email="ngModel"
+        />
+        @if(email.invalid && email.touched){
+          <p class="error-text">Please enter a valid email address.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="registerModel.password"
+          required
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+          #password="ngModel"
+        />
+        @if(password.invalid && password.touched){
+          <p class="error-text">
+            Password must be at least 8 characters long and contain at least one letter and one number.
+          </p>
+        }
+      </div>
+
+      <button type="submit" class="login-btn" [disabled]="registerForm.invalid">
+        Register
+      </button>
+      <button class="register-btn" (click)="redirectToLogin()">
+        Already have an account
+      </button>
+
+    </form>
+  </div>
+</div>
 
 @if(registerError){
-  <div>
-    <p>{{errorMessage}}</p>
-    <button (click)="hidePopUp()">Ok</button>
-  </div>      
+  <div class="popup-overlay">
+    <div class="popup-box">
+      <h2>{{ errorMessage }}</h2>
+      <button class="popup-btn" (click)="hidePopUp()">Ok</button>
+    </div>
+  </div>
 }
-
-
 @if(registerSuccess){
-  <div>
-    <p>Login successsfull please login using the same credentials</p>
-    <button (click)="redirectToLogin()">Login</button>
-  </div>      
+  <div class="popup-overlay">
+    <div class="popup-box">
+      <h2>Registration successful! Please login with the same credentials.</h2>
+      <button class="popup-btn" (click)="redirectToLogin()">Login</button>
+    </div>
+  </div>
 }

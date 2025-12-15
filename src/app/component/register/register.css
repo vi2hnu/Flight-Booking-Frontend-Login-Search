@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #DDDDDD;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.brand-title {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #222831;
+  margin: 0;
+}
+
+.login-page {
+  height: 100vh;
+  display: flex;
+  background-color: #F5F5DC;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background-color: #222831;
+  padding: 50px 40px;
+  width: 400px;
+  border-radius: 12px;
+}
+
+.login-heading {
+  color: #DDDDDD;
+  margin-bottom: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: #DDDDDD;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #30475E;
+  color: #DDDDDD;
+}
+
+.form-group input:focus {
+  outline: none;
+}
+
+.error-text {
+  color: #F05454;
+  font-size: 14px;
+}
+
+.login-btn {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #F05454;
+  color: white;
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-btn {
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid #30475E;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.register-btn:hover {
+  background-color: #F05454;
+  border-color: #F05454;
+  color: #FFFFFF;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background-color: #222831;
+  padding: 28px 40px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+
+.popup-box h2 {
+  color: #DDDDDD;
+  margin-bottom: 20px;
+}
+
+.popup-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #F05454;
+  color: white;
+}
