@@ -46,7 +46,12 @@
   </button>
 </form>
 
-@if (flights.length > 0) {
+@if(hasClickedeSearch && flights.length == 0) {
+  <p>No flights found for the selected criteria.</p>
+}
+
+
+@if (hasClickedeSearch && flights.length > 0) {
   <h2>Available Flights</h2>
 
   <table border="1">
@@ -80,4 +85,5 @@
 
 @if(fetchError) {
   <p>{{errorMessage}}</p>
+  <button (click)="hideError()">Ok</button>
 }

@@ -17,10 +17,12 @@ export class Search {
   flights: any[] = [];
   errorMessage: string = '';
   fetchError: boolean = false;
+  hasClickedeSearch: boolean = false;
 
   private searchService = inject(SearchService);
 
   search() {
+    this.hasClickedeSearch = true;
     this.searchService.searchFlight(this.searchModel).subscribe(
       (response) => {
         this.flights = response;
@@ -36,5 +38,10 @@ export class Search {
         console.error('Search failed', error);
       }
     );
+  }
+
+  hideError() {
+    this.fetchError = false;
+    this.errorMessage = '';
   }
 }
