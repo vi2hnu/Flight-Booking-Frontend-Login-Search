@@ -18,11 +18,15 @@ export class Search {
   errorMessage: string = '';
   fetchError: boolean = false;
   hasClickedeSearch: boolean = false;
+  today:string = new Date().toISOString().split('T')[0];
 
   private searchService = inject(SearchService);
 
   search() {
     this.hasClickedeSearch = true;
+    this.flights = [];
+
+    
     this.searchService.searchFlight(this.searchModel).subscribe(
       (response) => {
         this.flights = response;
@@ -33,6 +37,7 @@ export class Search {
           this.errorMessage = "Unauthorized access. Please login.";
         }
         else{
+          this.hasClickedeSearch = false;
           this.errorMessage = 'Internal Server Error. Please try again later.';
         }
         console.error('Search failed', error);
