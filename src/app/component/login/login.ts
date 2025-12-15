@@ -3,6 +3,7 @@ import { LoginModel } from '../../model/login/login-model.model';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../service/login/login-service';       
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,14 @@ export class Login {
   loginService = inject(LoginService);
   loginError: boolean = false;
   errorMessage: string = '';
+  private router = inject(Router);
 
 
   login() {
     this.loginService.login(this.loginModel).subscribe(
       (response) => {
         console.log('Login successful', response);
-        alert('Login successful');
+        this.router.navigate(['/search']);
       },
       (error) => {
         this.loginError = true;
@@ -38,5 +40,9 @@ export class Login {
 
   hidePopUp() {
     this.loginError = false;
+  }
+
+  redirectToRegister() {
+    this.router.navigate(['/register']);
   }
 }

@@ -4,7 +4,7 @@ import { Register } from './component/register/register';
 import { Search } from './component/search/search';
 
 export const routes: Routes = [
-    {path: 'login', component: Login},
-    {path: 'register', component: Register},
-    {path: 'search', component: Search},
+    {path: 'login', component: Login,title: 'Login'},
+    {path: 'register', component: Register , title: 'Sign Up'},
+    {path: 'search', component: Search, title: 'Search Flights'},
 ];

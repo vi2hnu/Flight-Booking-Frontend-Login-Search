@@ -23,7 +23,7 @@
     <br>
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
 </form>
-<p>Already have an account? <a routerLink="/login">Login here</a></p>
+<button (click)="redirectToLogin()">Already have an account</button>
 
 
 @if(registerError){
