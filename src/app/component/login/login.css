@@ -16,6 +16,7 @@ body {
   font-weight: 700;
   color: #222831;
   margin: 0;
+  z-index: 1;
 }
 
 .login-page {
@@ -23,7 +24,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5dc;
+  background-color: #ececd3;
 }
 
 .login-box {
@@ -31,6 +32,7 @@ body {
   padding: 50px 40px;
   width: 380px;
   border-radius: 12px;
+  z-index: 1;
 }
 
 
@@ -138,15 +140,29 @@ body {
 
 .plane-image {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
 
-  width: 15vw;
-  max-width: 220px;
-  min-width: 120px;
+  right: -6vw;
+  bottom: -40px;
 
-  height: auto;
+  width: 45vw;
+  height: 500px;
+
   opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.plane-down-image {
+  position: fixed;
+
+  left: -8vw;
+  top: -40px;
+
+  width: 45vw;
+  height: 500px;
+
+  opacity: 0.9;
+  z-index: 0;
   pointer-events: none;
 }
 
