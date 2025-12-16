@@ -8,8 +8,8 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 * Login page with validations
 * Sign up page
 * Flights search page
-* Proper custom pop ups with appropriate messages
-* Minimalistic and claen UI
+* Proper custom pop-ups with appropriate messages
+* Minimalistic and clean UI
 
 ---
 ## Pages
@@ -30,7 +30,7 @@ Simple Frontend made using angular for flight booking app. Has login, register a
   ```bash
   ng serve
 ### Backend
-- Ensure backend with all services are running at port 9000
+- Ensure backend with all services are running on port 9000
 
 ---
 ## SonarQube
@@ -59,16 +59,17 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 <img width="1893" height="896" alt="Image" src="https://github.com/user-attachments/assets/2570f4ea-86ea-4ba0-a3cc-c35266eac420" />
 
 (Note: The create user button won’t be available unless all fields are filled and valid.)
+
 ---
 
 ## Search page
 <img width="1902" height="915" alt="Image" src="https://github.com/user-attachments/assets/1ac4652c-3698-406f-bf94-ff7d162e5fc3" />
 
-- ### when no flights found between 2 citis:
+- ### when no flights found between 2 cities:
 <img width="1870" height="891" alt="Image" src="https://github.com/user-attachments/assets/46dc3f77-7257-4700-8f31-03b97aa32635" />
 
 ---
 ## Footer
 <img width="1887" height="364" alt="Image" src="https://github.com/user-attachments/assets/513989a9-4052-4ece-9c5a-c3793d0e79ea" />
 
-(Note: this component is common to all pages)
+(Note:This component is common to all pages)
