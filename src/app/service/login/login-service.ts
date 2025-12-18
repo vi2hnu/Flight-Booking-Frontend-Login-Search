@@ -13,4 +13,9 @@ export class LoginService {
   login(loginModel: LoginModel){
     return this.http.post<any>(this.apiUrl, loginModel,{ withCredentials: true });
   }
+
+  getUserDeatils(username: string) {
+    return this.http.post<any>(`http://localhost:9000/authservice/api/auth/user`, { username: username },{ withCredentials: true });
+  }
+
 }

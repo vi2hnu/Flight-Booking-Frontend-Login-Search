@@ -4,6 +4,7 @@ import { Search as SearchModel } from '../../model/search/search.model';
 import { Search as SearchService } from '../../service/search/search';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-search',
@@ -21,8 +22,10 @@ export class Search {
   hasClickedeSearch: boolean = false;
   today:string = new Date().toISOString().split('T')[0];
   private readonly router = inject(Router);
-
   private readonly searchService = inject(SearchService);
+
+  constructor(private cookieService: CookieService) {
+  }
 
   search() {
     this.flights = [];
@@ -55,7 +58,14 @@ export class Search {
   }
 
   logout() {
+    this.cookieService.deleteAll();
     this.searchService.logout();
     this.router.navigate(['/login']);
+  }
+
+  bookTicket(flightId: string) {
+    this.router.navigate(['/booking'],{
+      state: {id :flightId}
+    });
   }
 }

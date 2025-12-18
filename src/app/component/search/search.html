@@ -55,7 +55,6 @@
     <div class="flights-container">
       @for(flight of flights; track flight.id){
         <div class="flight-card">
-
           <div class="flight-top row">
             <p class="from-city"><strong>From:</strong> {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode }})</p>
             <p class="to-city"><strong>To:</strong> {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode }})</p>
@@ -76,7 +75,7 @@
             <p class="price"><strong>Price:</strong> Rs. {{ flight.price }}</p>
           </div>
 
-          <button class="book-btn">Book Ticket</button>
+          <button class="book-btn" (click)="bookTicket(flight.id)">Book Ticket</button>
         </div>
       }
     </div>
