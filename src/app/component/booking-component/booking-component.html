@@ -1,2 +1,28 @@
 <p>booking-component works!</p>
-<button (click)="bookTicket()">Book Ticket</button>
+<label for="passengerCount">Number of Passengers:</label>
+<input type="number" id="passengerCount" [(ngModel)]="passengerCount"/>
+<button (click)="generatePassengers()">Fill passenger details</button>
+
+@if(showForm==true){
+<form>
+    @for (passenger of passengers; track passenger;) {
+        <div>
+            <label for="passeenger-name"> Name of the passenger:</label>
+            <input type="text" required [(ngModel)]="passenger.name"/>
+            <select name="passenger-gender" [(ngModel)] = passenger.gender required>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+            </select>
+            <select name="passenger-meal" [(ngModel)] = passenger.meal required>
+                <option value="VEG">Veg</option>
+                <option value="NONVEG">Non-Veg</option>
+            </select>
+        </div>
+    }
+    <button (click)="bookTicket()">Book Ticket</button>
+</form>
+}
+@if(message!=''){
+  <p>{{message}}</p>
+}
