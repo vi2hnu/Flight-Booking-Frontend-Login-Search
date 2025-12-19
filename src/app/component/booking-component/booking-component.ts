@@ -54,7 +54,16 @@ export class BookingComponent implements OnInit {
       error: (error) => {
         console.error('Booking failed:', error);
         this.success = false;
-        this.message = 'Booking failed. Please try again later.';
+        if(error.status === 401){
+          this.message = 'Unauthorized user. Please login to continue.';
+
+        }
+        else if(error.status === 409){
+          this.message = 'Seat already booked. Please choose different seat(s).';
+        }
+        else{
+          this.message = 'Internal server error. Please try again later.';
+        }
       }
     });
   }
