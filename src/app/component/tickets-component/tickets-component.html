@@ -1,0 +1,21 @@
+@for (ticket of tickets; track ticket) {
+
+  <div>PNR: {{ ticket.pnr }}</div>
+  <div>Status: {{ ticket.status }}</div>
+  <div>Schedule ID: {{ ticket.scheduleId }}</div>
+  <div>
+    Booked By: {{ ticket.bookedByUsers.name }}
+    ({{ ticket.bookedByUsers.email }})
+  </div>
+
+  <div>Passengers:</div>
+
+  @for (p of ticket.passengers; track p) {
+    <div>Name: {{ p.name || '-' }}</div>
+    <div>Gender: {{ p.gender }}</div>
+    <div>Meal: {{ p.mealOption }}</div>
+    <div>Seat: {{ p.seatPosition || '-' }}</div>
+  }
+
+  <br>
+}
