@@ -44,7 +44,6 @@ export class BookingComponent implements OnInit {
       null,
       this.passengers
     );
-
     console.log(this.bookingPayload);
     this.bookingService.bookTicket(this.bookingPayload).subscribe({
       next: (response) => {
