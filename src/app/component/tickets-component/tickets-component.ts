@@ -11,6 +11,7 @@ export class TicketsComponent implements OnInit{
     ticketService = inject(TicketsService);
     email!: string;
     cancelledPnr: string = '';
+    errorMessage: string = '';
 
     ngOnInit() {
       const user = JSON.parse(localStorage.getItem('user')!);
@@ -24,9 +25,19 @@ export class TicketsComponent implements OnInit{
           this.tickets = data;
         },
         error: (err) => {
+          if(err.status === 404){
+            this.errorMessage = 'No tickets found.';
+          }
+          else if(err.status === 401){
+            this.errorMessage = 'Unauthorized access. Please log in.';
+          }  
+          else{
+            this.errorMessage = 'Internal server error. Please try again later.';
+          }
           console.error('Failed to load tickets', err);
         }
       });
+      
     }
 
     cancelTicket(pnr: string) {
