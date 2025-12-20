@@ -11,4 +11,8 @@ export class TicketsService {
     getHistory(email: string){
       return this.http.get<any>(this.apiUrl+'/history/'+email, { withCredentials: true });
     }
+
+    cancelTicket(pnr: string){
+      return this.http.delete<any>(this.apiUrl+'/cancel/'+pnr, { withCredentials: true });
+    }
 }

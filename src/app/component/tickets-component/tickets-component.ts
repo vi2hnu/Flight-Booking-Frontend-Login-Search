@@ -10,10 +10,15 @@ export class TicketsComponent implements OnInit{
     tickets: any;
     ticketService = inject(TicketsService);
     email!: string;
+    cancelledPnr: string = '';
 
     ngOnInit() {
       const user = JSON.parse(localStorage.getItem('user')!);
       this.email = user.email;
+      this.fetchTickets();
+    }
+
+    fetchTickets(){
       this.ticketService.getHistory(this.email).subscribe({
         next: (data) => {
           this.tickets = data;
@@ -23,5 +28,17 @@ export class TicketsComponent implements OnInit{
         }
       });
     }
-    
+
+    cancelTicket(pnr: string) {
+      this.ticketService.cancelTicket(pnr).subscribe({
+        next: (data) => {
+          console.log('Ticket cancelled successfully', data);
+          this.cancelledPnr = '';
+          this.fetchTickets();
+        },
+        error: (err) => {
+          console.error('Failed to cancel ticket', err);
+        }
+      });
+    }
 }
