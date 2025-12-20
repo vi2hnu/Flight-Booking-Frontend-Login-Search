@@ -1,35 +1,48 @@
-@for (ticket of tickets; track ticket) {
+@for (ticket of tickets; track ticket.pnr) {
 
   <div>
-    <div>PNR: {{ticket.pnr}}</div>
-      <div>Status: {{ticket.status}}</div>
-      <div>Schedule ID: {{ticket.scheduleId}}</div>
-      <div>
-        Booked By: {{ticket.bookedByUsers.name}}
-        ({{ticket.bookedByUsers.email}})
-      </div>
-      <div>Passengers:</div>
-      @for (p of ticket.passengers; track p) {
-        <div>Name: {{p.name}}</div>
-        <div>Gender: {{p.gender}}</div>
-        <div>Meal: {{p.mealOption}}</div>
-        <div>Seat: {{p.seatPosition}}</div>
-        <br>
+    <div>PNR: {{ ticket.pnr }}</div>
+    <div>Status: {{ ticket.status }}</div>
+
+    <div>From City ID: {{ ticket.fromCityId }}</div>
+    <div>To City ID: {{ ticket.toCityId }}</div>
+    <div>Departure Date: {{ ticket.departureDate }}</div>
+    <div>Departure Time: {{ ticket.departureTime | date:'hh:mm a' }}</div>  
+
+    <div>
+      Booked By: {{ ticket.bookedByUsers.name }}
+      ({{ ticket.bookedByUsers.email }})
+    </div>
+
+    <div>Passengers:</div>
+
+    @for (p of ticket.passengers; track p) {
+      <div>Name: {{ p.name }}</div>
+      <div>Gender: {{ p.gender }}</div>
+      <div>Meal: {{ p.mealOption }}</div>
+      <div>Seat: {{ p.seatPosition }}</div>
+      <br>
+    }
+
+    @if (ticket.status !== 'CANCELED') {
+
+      <button (click)="cancelledPnr = ticket.pnr">
+        Cancel Ticket
+      </button>
+
+      @if (cancelledPnr === ticket.pnr) {
+        <div>
+          <p>Are you sure you want to cancel ticket?</p>
+          <button (click)="cancelTicket(ticket.pnr)">Yes</button>
+          <button (click)="hidePopUp()">No</button>
+        </div>
       }
 
-      @if(ticket.status!='CANCELED'){
-        <button (click)="cancelledPnr=ticket.pnr">Cancel Ticket</button>
-        @if(cancelledPnr==ticket.pnr){
-          <div>
-            <p>Are you sure you want to cancel ticket?</p>
-            <button (click)="cancelTicket(ticket.pnr)">yes</button>
-            <button (click)="cancelledPnr=''" >No</button>
-          </div>
-        }
-      }
+      <div>{{ lessThan24HoursError }}</div>
+    }
   </div>
-  <br>
-  <br>
+
+  <br><br>
 }
 
-<p>{{errorMessage}}</p>
+<p>{{ errorMessage }}</p>
