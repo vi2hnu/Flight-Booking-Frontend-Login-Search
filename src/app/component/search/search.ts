@@ -4,12 +4,13 @@ import { Search as SearchModel } from '../../model/search/search.model';
 import { Search as SearchService } from '../../service/search/search';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'
-import { CookieService } from 'ngx-cookie-service';
+import { HeaderComponent } from '../header-component/header-component';
+
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,HeaderComponent],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
@@ -23,9 +24,6 @@ export class Search {
   today:string = new Date().toISOString().split('T')[0];
   private readonly router = inject(Router);
   private readonly searchService = inject(SearchService);
-
-  constructor(private cookieService: CookieService) {
-  }
 
   search() {
     this.flights = [];
@@ -55,12 +53,6 @@ export class Search {
   hideError() {
     this.fetchError = false;
     this.errorMessage = '';
-  }
-
-  logout() {
-    this.cookieService.deleteAll();
-    this.searchService.logout();
-    this.router.navigate(['/login']);
   }
 
   bookTicket(flightId: string) {

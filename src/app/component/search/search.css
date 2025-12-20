@@ -4,44 +4,7 @@ body {
   background-color: #dddddd;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f5f5dc;
-  padding: 15px 30px;
-}
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-
-.logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
-.brand-title {
-  font-size: 36px;
-  font-weight: 700;
-  color: #222831;
-  margin: 0;
-}
-
-.logout-btn {
-  padding: 10px 18px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #f05454;
-  color: white;
-}
 
 .header-hr {
   border: 0;

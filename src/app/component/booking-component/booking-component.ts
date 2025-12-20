@@ -4,10 +4,11 @@ import { BookingService } from '../../service/booking/booking-service';
 import { PassengerModel } from '../../model/booking/passenger-model.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../header-component/header-component';
 
 @Component({
   selector: 'app-booking-component',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,HeaderComponent],
   templateUrl: './booking-component.html',
   styleUrls: ['./booking-component.css'],
 })

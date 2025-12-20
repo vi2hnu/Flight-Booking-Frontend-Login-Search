@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TicketsService } from '../../service/tickets/tickets-service';
 import { DatePipe } from '@angular/common';
+import { HeaderComponent } from '../header-component/header-component';
 
 @Component({
   selector: 'app-tickets-component',
-  imports: [DatePipe],
+  imports: [DatePipe,HeaderComponent],
   templateUrl: './tickets-component.html',
   styleUrl: './tickets-component.css',
 })
