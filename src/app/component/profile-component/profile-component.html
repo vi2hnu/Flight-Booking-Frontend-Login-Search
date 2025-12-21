@@ -1,0 +1,48 @@
+<app-header-component></app-header-component>
+<br>
+<br>
+<br>
+<br>
+
+<div class="profile-container">
+    <h2>User Profile</h2>
+
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+
+    <hr>
+    @if(!requestChangePassword){
+    <button (click)="requestChangePassword = true">Change Password</button>
+    }
+
+    @if(requestChangePassword){
+    <h3>Change Password</h3>
+    <form #passwordForm="ngForm" (ngSubmit)="changePassword()">
+        <input type="password" name="oldPassword" required placeholder="Old Password"
+            [(ngModel)]="request.oldPassword" />
+        <input type="password" name="newPassword" required placeholder="New Password" [(ngModel)]="request.newPassword"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel" />
+        @if(password.invalid && password.dirty){
+        <p class="error-text">
+            New password must be at least 8 characters long and contain at least one letter and one number.
+        </p>
+        }
+        <button type="submit" [disabled]="passwordForm.invalid">Change Password</button>
+    </form>
+    }
+
+</div>
+
+@if (passwordChangeSuccess) {
+<div class="popup-overlay">
+    <div class="popup-box">
+        <h2>Password changed successfully.</h2>
+        <p>Redirecting to login page in {{ countdown }} seconds</p>
+        <button class="popup-btn" (click)="redirectToLogin()">Login</button>
+    </div>
+</div>
+}
+
+@if(error){
+<p>{{ errorMessage }}</p>
+}
