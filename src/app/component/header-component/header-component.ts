@@ -21,4 +21,16 @@ export class HeaderComponent {
     this.searchService.logout();
     this.router.navigate(['/login']);
   }
+
+  routeToProfile(){
+    this.router.navigate(['/profile']);
+  }
+
+  routeToTickets(){
+    this.router.navigate(['/tickets']);
+  }
+
+  routeToSearch(){
+    this.router.navigate(['/search']);
+  }
 }
