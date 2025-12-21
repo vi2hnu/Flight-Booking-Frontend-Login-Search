@@ -27,7 +27,12 @@ export class Login {
         .subscribe({
           next: (user) => {
             localStorage.setItem('user', JSON.stringify(user));
-            this.router.navigate(['/search']);
+            const isAdmin = user.roles.some((role: any) => role.name === 'ADMIN');
+            if (isAdmin) {
+              this.router.navigate(['/admin/add/flight']);
+              return;
+            }
+            this.router.navigate(['/search'])
           },
           error: () => {
             this.errorMessage = 'Failed to load user details';
