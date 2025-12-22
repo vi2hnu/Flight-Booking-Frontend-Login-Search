@@ -21,7 +21,7 @@
         </div>
 
         @if (showForm) {
-        <form class="booking-form">
+        <form class="booking-form" #bookingForm="ngForm">
 
             @for (passenger of passengers; let i = $index; track passenger) {
             <div class="passenger-row">
@@ -47,7 +47,7 @@
             }
 
             @if(passengerCount > 0) {
-            <button class="primary-btn" type="button" (click)="bookTicket()">
+            <button class="primary-btn" type="button" (click)="bookTicket()" [disabled]="bookingForm.invalid">
                 Book Ticket
             </button>
             }

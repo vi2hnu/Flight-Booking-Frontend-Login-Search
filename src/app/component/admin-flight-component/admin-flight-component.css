@@ -134,3 +134,8 @@
   background-color: rgba(76, 175, 80, 0.15);
   color: #b6e3b8;
 }
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

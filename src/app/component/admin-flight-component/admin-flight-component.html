@@ -15,16 +15,16 @@
 
     <h2>Add Flight Schedule</h2>
 
-    <form (ngSubmit)="addSchedule()" class="two-column-form">
+    <form (ngSubmit)="addSchedule()" class="two-column-form" #flightForm="ngForm">
 
       <div class="form-field">
         <label for="flightId">Flight ID:</label>
-        <input type="number" id="flightId" [(ngModel)]="request.flightId" name="flightId">
+        <input type="number" id="flightId" [(ngModel)]="request.flightId" name="flightId" required>
       </div>
 
       <div class="form-field">
         <label for="fromCityId">From City:</label>
-        <select id="fromCityId" [(ngModel)]="request.fromCityId" name="fromCityId">
+        <select id="fromCityId" [(ngModel)]="request.fromCityId" name="fromCityId" required>
           <option value="">Select city</option>
           <option value="1">Chennai (MAA)</option>
           <option value="2">Mumbai (BOM)</option>
@@ -36,7 +36,7 @@
 
       <div class="form-field">
         <label for="toCityId">To City:</label>
-        <select id="toCityId" [(ngModel)]="request.toCityId" name="toCityId">
+        <select id="toCityId" [(ngModel)]="request.toCityId" name="toCityId" required>
           <option value="">Select city</option>
           <option value="1">Chennai (MAA)</option>
           <option value="2">Mumbai (BOM)</option>
@@ -48,31 +48,31 @@
 
       <div class="form-field">
         <label for="departureDate">Departure Date:</label>
-        <input type="date" id="departureDate" [(ngModel)]="request.departureDate" name="departureDate">
+        <input type="date" id="departureDate" [(ngModel)]="request.departureDate" name="departureDate" required >
       </div>
 
       <div class="form-field">
         <label for="departureTime">Departure Time:</label>
-        <input type="time" id="departureTime" [(ngModel)]="request.departureTime" name="departureTime">
+        <input type="time" id="departureTime" [(ngModel)]="request.departureTime" name="departureTime"required >
       </div>
 
       <div class="form-field">
         <label for="price">Price:</label>
-        <input type="number" id="price" [(ngModel)]="request.price" name="price" step="0.01">
+        <input type="number" id="price" [(ngModel)]="request.price" name="price"  required>
       </div>
 
       <div class="form-field">
         <label for="seatsAvailable">Seats Available:</label>
-        <input type="number" id="seatsAvailable" [(ngModel)]="request.seatsAvailable" name="seatsAvailable">
+        <input type="number" id="seatsAvailable" [(ngModel)]="request.seatsAvailable" name="seatsAvailable" required>
       </div>
 
       <div class="form-field">
         <label for="duration">Duration (minutes):</label>
-        <input type="number" id="duration" [(ngModel)]="request.duration" name="duration">
+        <input type="number" id="duration" [(ngModel)]="request.duration" name="duration" required>
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="primary-btn">Submit</button>
+        <button type="submit" class="primary-btn" [disabled]="flightForm.invalid">Submit</button>
       </div>
     </form>
 
