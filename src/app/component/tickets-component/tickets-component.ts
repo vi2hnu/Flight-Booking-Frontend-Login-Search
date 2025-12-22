@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TicketsService } from '../../service/tickets/tickets-service';
 import { DatePipe } from '@angular/common';
 import { HeaderComponent } from '../header-component/header-component';
-import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-tickets-component',
@@ -29,10 +28,8 @@ export class TicketsComponent implements OnInit {
   fetchTickets() {
     this.ticketService.getHistory(this.email).subscribe({
       next: (data) => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
         this.tickets = data
+          .filter((ticket: any) => ticket.departureDate >= this.today)
           .sort((a: any, b: any) => {
             const dateA = new Date(a.departureTime);
             const dateB = new Date(b.departureTime);

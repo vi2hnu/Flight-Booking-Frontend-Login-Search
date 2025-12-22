@@ -1,6 +1,7 @@
 # FlightBooking app frontend using angular
 
-Simple Frontend made using angular for flight booking app. Has login, register and search flights page.
+## Backend Repossitory
+Link = https://github.com/vi2hnu/Flight-Booking-Docker-and-Security
 
 ---
 
@@ -8,18 +9,27 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 * Login page with validations
 * Sign up page
 * Flights search page
+* Booking page
+* Tickets history page
+* Profile page with password change option
+* Admin add flight page
+* AuthGaurd implementation to protect routes
 * Proper custom pop-ups with appropriate messages
 * Minimalistic and clean UI
 
 ---
 ## Pages
 
-| Path        | Component | Title          | Description |
-|------------|-----------|----------------|-------------|
-| `/login`    | `Login`   | Login          | User login page |
-| `/`         | —         | —              | Redirects to `/login` |
-| `/register` | `Register`| Sign Up        | User registration page |
-| `/search`   | `Search`  | Search Flights | Page for searching flights |
+| Path | Component | Title | Description | Admin |
+|------|----------|-------|-------------|-------|
+| `/login` | `Login` | Login | User login page | No |
+| `/` | — | — | Redirects to `/login` | No |
+| `/register` | `Register` | Sign Up | User registration page | No |
+| `/search` | `Search` | Search Flights | Search available flights | No |
+| `/booking` | `BookingComponent` | Book Flight | Flight booking page | No |
+| `/tickets` | `TicketsComponent` | Your tickets | View booked tickets | No |
+| `/profile` | `ProfileComponent` | Profile | User profile page | No |
+| `/admin/add/flight` | `AdminFlightComponent` | Add Flight Schedule | Add new flight schedules | Yes |
 
 ---
 ## How to Start the Application
@@ -30,11 +40,11 @@ Simple Frontend made using angular for flight booking app. Has login, register a
   ```bash
   ng serve
 ### Backend
-- Ensure backend with all services are running on port 9000
+- Ensure backend with all services are running with api gateway on port 9000 (refer to backend repository readme)
 
 ---
 ## SonarQube
-<img width="1492" height="783" alt="Image" src="https://github.com/user-attachments/assets/02e28110-f80f-42d9-a21b-1da48ff1142d" />
+<img width="1509" height="811" alt="Image" src="https://github.com/user-attachments/assets/e1cf76be-2b29-472a-ae94-5421682aac20" />
 
 ---
 ## Login page
@@ -56,7 +66,20 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 <img width="1902" height="915" alt="Image" src="https://github.com/user-attachments/assets/1ac4652c-3698-406f-bf94-ff7d162e5fc3" />
 
 ---
-## Booking Page
+## Booking page
+<img width="1891" height="900" alt="Image" src="https://github.com/user-attachments/assets/656f3c88-e4f6-4814-9101-dceb6b8f9054" />
+
+---
+## Tickets history page
+<img width="1889" height="887" alt="Image" src="https://github.com/user-attachments/assets/7b823b9a-7196-4323-a7f3-6d5f4830321e" />
+
+---
+### Profile page 
+<img width="1900" height="895" alt="Image" src="https://github.com/user-attachments/assets/648c8e32-3d76-4394-b0c0-8909b39a68e1" />
+
+---
+### Admin add-flight page
+<img width="1880" height="885" alt="Image" src="https://github.com/user-attachments/assets/88a8f4aa-c26d-4485-99fb-268ee641ec75" />
 
 ---
 ## Footer
