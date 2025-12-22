@@ -6,15 +6,16 @@ import { BookingComponent } from './component/booking-component/booking-componen
 import { TicketsComponent } from './component/tickets-component/tickets-component';
 import { ProfileComponent } from './component/profile-component/profile-component';
 import { AdminFlightComponent } from './component/admin-flight-component/admin-flight-component';
-import { authGuardGuard } from './guard/auth-guard-guard';
+import { adminGuard } from './guard/admin/admin-guard';
+import { userGuard } from './guard/user/user-guard';
 
 export const routes: Routes = [
     {path: 'login', component: Login,title: 'Login'},
     {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'register', component: Register , title: 'Sign Up'},
-    {path: 'search', component: Search, title: 'Search Flights'},
-    {path: 'booking', component: BookingComponent, title: 'Book Flight'},
-    {path: 'tickets',component: TicketsComponent, title: 'Your tickets'},
-    {path: 'profile', component: ProfileComponent, title: 'Profile'},
-    {path: 'admin/add/flight', component: AdminFlightComponent, canActivate: [authGuardGuard], title: 'Add Flight Schedule'},
+    {path: 'register', component: Register, title: 'Sign Up'},
+    {path: 'search', component: Search, canActivate: [userGuard], title: 'Search Flights'},
+    {path: 'booking', component: BookingComponent, canActivate: [userGuard], title: 'Book Flight'},
+    {path: 'tickets',component: TicketsComponent, canActivate: [userGuard], title: 'Your tickets'},
+    {path: 'profile', component: ProfileComponent, canActivate: [userGuard], title: 'Profile'},
+    {path: 'admin/add/flight', component: AdminFlightComponent, canActivate: [adminGuard], title: 'Add Flight Schedule'},
 ];

@@ -38,6 +38,7 @@ export class AdminFlightComponent {
 
   logout() {
     this.cookieService.deleteAll();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
   

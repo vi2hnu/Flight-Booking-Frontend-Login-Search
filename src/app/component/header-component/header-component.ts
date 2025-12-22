@@ -19,6 +19,7 @@ export class HeaderComponent {
   logout() {
     this.cookieService.deleteAll();
     this.searchService.logout();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 
