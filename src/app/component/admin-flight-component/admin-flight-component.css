@@ -36,7 +36,7 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #ec3030;
+  background-color: #ce3d3d;
   color: white;
 }
 
@@ -110,8 +110,8 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #f05454;
-  color: #ffffff;
+  background-color: #ce3d3d;
+  color: #fff9f9;
 }
 
 .primary-btn:hover {

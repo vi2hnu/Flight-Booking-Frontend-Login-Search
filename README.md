@@ -39,11 +39,7 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 ---
 ## Login page
 - ### on load:
-<img width="1917" height="1022" alt="Image" src="https://github.com/user-attachments/assets/16d5e376-b469-43b0-a2bf-c6550e3ef9d0" />
-
-
-- ### when provided wrong credentials:
-<img width="1908" height="900" alt="Image" src="https://github.com/user-attachments/assets/50f18340-5e8b-4459-b479-acbe3bfbc2d2" />
+<img width="1917" height="1022" alt="Image" src="https://github.com/user-attachments/assets/16d5e376-b469-43b0-a2bf-c6550e3ef9d0" /
 
 (Note: The login button won’t be available unless both fields are filled.)
 
@@ -52,12 +48,6 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 - ### on load:
 <img width="1904" height="906" alt="Image" src="https://github.com/user-attachments/assets/d60e2bb3-39da-4b01-8cd2-d1b3c25026fc" />
 
-- ### on entering invalid email or password:
-<img width="1896" height="906" alt="Image" src="https://github.com/user-attachments/assets/7bd70be1-3e10-457e-b379-3af84da494c4" />
-
-- ### on entering existing username or email:
-<img width="1893" height="896" alt="Image" src="https://github.com/user-attachments/assets/2570f4ea-86ea-4ba0-a3cc-c35266eac420" />
-
 (Note: The create user button won’t be available unless all fields are filled and valid.)
 
 ---
@@ -65,8 +55,8 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 ## Search page
 <img width="1902" height="915" alt="Image" src="https://github.com/user-attachments/assets/1ac4652c-3698-406f-bf94-ff7d162e5fc3" />
 
-- ### when no flights found between 2 cities:
-<img width="1870" height="891" alt="Image" src="https://github.com/user-attachments/assets/46dc3f77-7257-4700-8f31-03b97aa32635" />
+---
+## Booking Page
 
 ---
 ## Footer

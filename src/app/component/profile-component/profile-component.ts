@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   passwordChangeSuccess:boolean = false;
   error:boolean = false;
   errorMessage:string = '';
+  newPasswordRepeat:string = '';
   request: ChangePassword = {
     username: '',
     oldPassword: '',
@@ -43,6 +44,11 @@ export class ProfileComponent implements OnInit {
     if(this.request.oldPassword === this.request.newPassword) {
       this.error = true;
       this.errorMessage = "New password must be different from old password";
+      return;
+    }
+    if(this.request.newPassword != this.newPasswordRepeat) {
+      this.error = true;
+      this.errorMessage = "New password and repeated password do not match";
       return;
     }
     this.profileService.changePassword(this.request).subscribe({

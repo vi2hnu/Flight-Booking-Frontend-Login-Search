@@ -16,6 +16,7 @@ export class AdminFlightComponent {
   error:boolean = false;
   success:boolean = false;
   errorMessage:string = '';
+  today:string = new Date().toISOString().split('T')[0];
   request: FlightModel = {
     flightId: 0,
     fromCityId: 0,

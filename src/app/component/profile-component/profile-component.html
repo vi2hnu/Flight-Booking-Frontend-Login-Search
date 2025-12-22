@@ -19,6 +19,9 @@
         <input type="password" name="newPassword" required placeholder="New Password"
             [(ngModel)]="request.newPassword"
             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel" />
+        <input type="password" name="newPasswordRepeat" required placeholder="Repeat New Password"
+            [(ngModel)]="newPasswordRepeat"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" #password="ngModel" />
         
         @if(password.invalid && password.dirty){
         <p class="error-text">

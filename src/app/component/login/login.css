@@ -93,7 +93,7 @@ body {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #F05454;
+  background-color: #ce3d3d;
   color: white;
 }
 
@@ -117,8 +117,8 @@ body {
 }
 
 .register-btn:hover {
-  background-color: #F05454;
-  border-color: #F05454;
+  background-color: #ce3d3d;
+  border-color: #ce3d3d;
   color: #FFFFFF;
 }
 
@@ -152,7 +152,7 @@ body {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #F05454;
+  background-color: #ce3d3d;
   color: white;
 }
 

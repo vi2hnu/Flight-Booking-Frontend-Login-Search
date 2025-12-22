@@ -48,7 +48,7 @@
 
       <div class="form-field">
         <label for="departureDate">Departure Date:</label>
-        <input type="date" id="departureDate" [(ngModel)]="request.departureDate" name="departureDate" required >
+        <input type="date" id="departureDate" [(ngModel)]="request.departureDate" name="departureDate" required [min]="today" required>
       </div>
 
       <div class="form-field">
