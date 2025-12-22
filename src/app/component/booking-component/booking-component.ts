@@ -15,17 +15,26 @@ import { HeaderComponent } from '../header-component/header-component';
 export class BookingComponent implements OnInit {
   userId!: number;
   flightId!: number;
+  toCity!: string;
+  fromCity!: string;
+  departureDate!: string;
+  departureTime!: string;
   bookingPayload!: BookingModel;
   bookingService  = inject(BookingService);
   success: boolean = false;
   message: string = '';
   passengerCount: number = 0;
   showForm: boolean = false;
+  buttonClicked: boolean = false;
   passengers: PassengerModel[] = [];
 
 
   ngOnInit() {
     this.flightId = history.state.id;
+    this.departureDate = history.state.date;
+    this.departureTime = history.state.time.split('T')[1];
+    this.fromCity = history.state.fromCityCode;
+    this.toCity = history.state.toCityCode;
     const user = JSON.parse(localStorage.getItem('user')!);
     this.userId = user.id
   }
@@ -48,9 +57,8 @@ export class BookingComponent implements OnInit {
     console.log(this.bookingPayload);
     this.bookingService.bookTicket(this.bookingPayload).subscribe({
       next: (response) => {
-        console.log('Booking successful:', response);
         this.success = true;
-        this.message = 'Booking successfull' + response.pnr;
+        this.message = 'Booking successfull. PNR = ' + response.pnr+'. Please check the tickets page or your email for more details.';
       },
       error: (error) => {
         console.error('Booking failed:', error);

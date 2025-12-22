@@ -71,7 +71,8 @@
             <p class="price"><strong>Price:</strong> Rs. {{ flight.price }}</p>
           </div>
 
-          <button class="book-btn" (click)="bookTicket(flight.id)">Book Ticket</button>
+          <button class="book-btn" (click)="bookTicket(flight.id,flight.toCity.cityName,flight.fromCity.cityName,flight.departureDate,flight.departureTime)">
+            Book Ticket</button>
         </div>
       }
     </div>

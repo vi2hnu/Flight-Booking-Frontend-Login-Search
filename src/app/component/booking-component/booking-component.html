@@ -1,37 +1,66 @@
 <app-header-component></app-header-component>
-<br>
-<br>
-<br>
-<br>
-<br>
-<label for="passengerCount">Number of Passengers:</label>
-<input type="number" id="passengerCount" [(ngModel)]="passengerCount"/>
-<button (click)="generatePassengers()">Fill passenger details</button>
 
-@if(showForm==true){
-<form>
-    @for (passenger of passengers; let i = $index; track passenger;) {
-        <div>
-            <label for="passeenger-name"> Name of the passenger:</label>
-            <input type="text" required name="passengerName{{i}}" [(ngModel)]="passenger.name"/>
-            <select name="passenger-gender" [(ngModel)] = passenger.gender required>
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
-                <option value="OTHER">Other</option>
-            </select>
-            <select name="passenger-meal" [(ngModel)] = passenger.meal required>
-                <option value="VEG">Veg</option>
-                <option value="NONVEG">Non-Veg</option>
-            </select>
-            <input type="text" name="passengerSeat{{i}}" placeholder="Seat No." required [(ngModel)]="passenger.seatPos"/>
+<div class="booking-page">
+    <div class="flight-info-box">
+        <div class="route">
+            <span class="city">{{ fromCity }}</span>
+            <span class="arrow">→</span>
+            <span class="city">{{ toCity }}</span>
         </div>
-    }
-    <button (click)="bookTicket()">Book Ticket</button>
-</form>
-}
-@if(message!=''){
-  <p>{{message}}</p>
-}
-<br>
-<br>
-<br>
+        <div class="meta">
+            <span>Departure Date: {{ departureDate }}</span>
+            <span>Departure Time: {{ departureTime }}</span>
+        </div>
+    </div>
+    <br>
+    <div class="booking-box">
+
+        <div class="passenger-count-section">
+            <label for="passengerCount">Number of Passengers</label>
+            <input type="number" id="passengerCount" [(ngModel)]="passengerCount"  (change)="generatePassengers()"/>
+        </div>
+
+        @if (showForm) {
+        <form class="booking-form">
+
+            @for (passenger of passengers; let i = $index; track passenger) {
+            <div class="passenger-row">
+
+                <input type="text" placeholder="Passenger name" required name="passengerName{{i}}"
+                    [(ngModel)]="passenger.name" />
+
+                <select required name="passengerGender{{i}}" [(ngModel)]="passenger.gender">
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="OTHER">Other</option>
+                </select>
+
+                <select required name="passengerMeal{{i}}" [(ngModel)]="passenger.meal">
+                    <option value="VEG">Veg</option>
+                    <option value="NONVEG">Non-Veg</option>
+                </select>
+
+                <input type="text" class="seat" placeholder="Seat No." required name="passengerSeat{{i}}"
+                    [(ngModel)]="passenger.seatPos" />
+
+            </div>
+            }
+
+            @if(passengerCount > 0) {
+            <button class="primary-btn" type="button" (click)="bookTicket()">
+                Book Ticket
+            </button>
+            }
+
+        </form>
+        }
+
+        @if (message !== '') {
+        <div class="inline-message" [class.success-message]="success" [class.error-message]="!success">
+            {{ message }}
+        </div>
+        }
+
+    </div>
+
+</div>

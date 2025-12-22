@@ -3,6 +3,8 @@ import { FlightService } from '../../service/flight/flight-service';
 import { FlightModel } from '../../model/Flight/flight-model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-admin-flight-component',
@@ -25,13 +27,23 @@ export class AdminFlightComponent {
     duration: 0,
   }
   flightService: FlightService = inject(FlightService);
+  private readonly router = inject(Router);
+  constructor(private cookieService: CookieService) {
+  }
 
   handleError(message: string) {
     this.error = true;
     this.errorMessage = message;
   }
 
+  logout() {
+    this.cookieService.deleteAll();
+    this.router.navigate(['/login']);
+  }
+  
   addSchedule() {
+    this.error = false;
+    this.success = false;
     this.request.departureTime = this.request.departureDate+'T'+this.request.departureTime;
     this.flightService.addFlightSchedule(this.request).subscribe({
       next: (response) => {

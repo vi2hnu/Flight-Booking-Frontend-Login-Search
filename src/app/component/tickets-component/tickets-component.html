@@ -1,56 +1,72 @@
 <app-header-component></app-header-component>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-@for (ticket of tickets; track ticket.pnr) {
+<div class="tickets-page">
 
-  <div>
-    <div>PNR: {{ ticket.pnr }}</div>
-    <div>Status: {{ ticket.status }}</div>
+  <div class="tickets-header">
+    <h2>Your Tickets</h2>
+  </div>
 
-    <div>From City ID: {{ ticket.fromCityId }}</div>
-    <div>To City ID: {{ ticket.toCityId }}</div>
-    <div>Departure Date: {{ ticket.departureDate }}</div>
-    <div>Departure Time: {{ ticket.departureTime | date:'hh:mm a' }}</div>  
+  @for (ticket of tickets; track ticket.pnr) {
 
-    <div>
-      Booked By: {{ ticket.bookedByUsers.name }}
-      ({{ ticket.bookedByUsers.email }})
+  <div class="ticket-card">
+
+    <div class="ticket-grid">
+
+      <div class="ticket-left">
+        <div><strong>PNR:</strong> {{ ticket.pnr }}</div>
+        <div><strong>Status:</strong> {{ ticket.status }}</div>
+        <div><strong>From:</strong> {{ ticket.fromCityId }}</div>
+        <div><strong>To:</strong> {{ ticket.toCityId }}</div>
+      </div>
+
+      <div class="ticket-right">
+        <div><strong>Date:</strong> {{ ticket.departureDate }}</div>
+        <div><strong>Time:</strong> {{ ticket.departureTime | date:'hh:mm a' }}</div>
+        <div>
+          <strong>Booked By:</strong>
+          {{ ticket.bookedByUsers.name }} ({{ ticket.bookedByUsers.email }})
+        </div>
+      </div>
+
     </div>
 
-    <div>Passengers:</div>
+    <div class="passenger-section">
+      <h4>Passengers</h4>
 
-    @for (p of ticket.passengers; track p) {
-      <div>Name: {{ p.name }}</div>
-      <div>Gender: {{ p.gender }}</div>
-      <div>Meal: {{ p.mealOption }}</div>
-      <div>Seat: {{ p.seatPosition }}</div>
-      <br>
-    }
+      @for (p of ticket.passengers; track p) {
+      <div class="passenger-row">
+        <span>{{ p.name }}</span>
+        <span>{{ p.gender }}</span>
+        <span>{{ p.mealOption }}</span>
+        <span>Seat {{ p.seatPosition }}</span>
+      </div>
+      }
+    </div>
 
-    @if (ticket.status !== 'CANCELED') {
-
-      <button (click)="cancelledPnr = ticket.pnr">
+    @if (ticket.status !== 'CANCELED' && ticket.departureDate >= today) {
+    <div class="ticket-actions">
+      <button class="danger-btn" (click)="cancelledPnr = ticket.pnr">
         Cancel Ticket
       </button>
 
       @if (cancelledPnr === ticket.pnr) {
-        <div>
-          <p>Are you sure you want to cancel ticket?</p>
-          <button (click)="cancelTicket(ticket.pnr)">Yes</button>
-          <button (click)="hidePopUp()">No</button>
+        <div class="popup-overlay">
+          <div class="popup-box">
+            <p>Are you sure you want to cancel ticket?</p>
+            <button class="popup-btn" (click)="cancelTicket(ticket.pnr)">Yes</button>
+            <button class="popup-btn-no" (click)="hidePopUp()">No</button>
+          </div>
         </div>
       }
 
-      <div>{{ lessThan24HoursError }}</div>
+      @if(errorTicketPnr === ticket.pnr && lessThan24HoursError) {
+        <p class="error-message">{{ lessThan24HoursError }}</p>
+      }
+    </div>
     }
+
   </div>
+  }
 
-  <br><br>
-}
+  <p class="page-error">{{ errorMessage }}</p>
 
-<p>{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+.tickets-page {
+  padding: 40px 24px;
+  background-color: #ececd3;
+  min-height: calc(100vh - 90px)
+}
+
+.tickets-header {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top:5%;
+}
+
+.tickets-header h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #222831;
+}
+
+.ticket-card {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #222831;
+  color: #dddddd;
+}
+
+.ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ticket-left div,
+.ticket-right div {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.passenger-section {
+  margin-top: 20px;
+}
+
+.passenger-section h4 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.passenger-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ticket-actions {
+  margin-top: 20px;
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border: 2px solid #30475e;
+  color: #30475e;
+}
+
+.danger-btn {
+  background-color: #f05454;
+  color: #ffffff;
+}
+
+.confirm-box {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: rgba(240, 84, 84, 0.15);
+}
+
+.confirm-box p {
+  margin-bottom: 8px;
+}
+
+.inline-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #f5b5b5;
+}
+
+.page-error {
+  text-align: center;
+  margin-top: 30px;
+  color: #222831;
+  font-weight: 500;
+}
+
+
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background-color: #222831;
+  padding: 28px 40px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+
+
+.popup-box h2 {
+  color: #DDDDDD;
+  margin-bottom: 20px;
+}
+
+.popup-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #F05454;
+  color: white;
+}
+.popup-btn-no{
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #30475E;
+  color: white;
+}
+.popup-btn + .popup-btn-no {
+  margin-left: 16px;
+}

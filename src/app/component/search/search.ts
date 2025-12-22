@@ -55,9 +55,9 @@ export class Search {
     this.errorMessage = '';
   }
 
-  bookTicket(flightId: string) {
+  bookTicket(flightId: string,toCityCode:string,fromCityCode:string,date:string,time:string) {
     this.router.navigate(['/booking'],{
-      state: {id :flightId}
+      state: {id :flightId, toCityCode:toCityCode, fromCityCode:fromCityCode, date:date, time:time}
     });
   }
 }
