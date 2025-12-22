@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { BookingModel } from '../../model/booking/booking-model.model';
+import { BookingModel } from '../../model/booking/booking-model';
 import { BookingService } from '../../service/booking/booking-service';
 import { PassengerModel } from '../../model/booking/passenger-model.model';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,12 @@ export class BookingComponent implements OnInit {
   fromCity!: string;
   departureDate!: string;
   departureTime!: string;
-  bookingPayload!: BookingModel;
+  bookingPayload: BookingModel ={
+    user: { id: 0 },
+    scheduleId: 0,
+    returnTripId: null,
+    passengers: []
+  };
   bookingService  = inject(BookingService);
   success: boolean = false;
   message: string = '';
@@ -48,12 +53,10 @@ export class BookingComponent implements OnInit {
   }
 
   bookTicket() {
-    this.bookingPayload = new BookingModel(
-      { id: this.userId },
-      this.flightId,
-      null,
-      this.passengers
-    );
+    this.bookingPayload.user.id = this.userId;
+    this.bookingPayload.scheduleId = this.flightId;
+    this.bookingPayload.returnTripId = null;
+    this.bookingPayload.passengers = this.passengers;
     console.log(this.bookingPayload);
     this.bookingService.bookTicket(this.bookingPayload).subscribe({
       next: (response) => {

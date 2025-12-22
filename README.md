@@ -39,7 +39,7 @@ Simple Frontend made using angular for flight booking app. Has login, register a
 ---
 ## Login page
 - ### on load:
-<img width="1917" height="1022" alt="Image" src="https://github.com/user-attachments/assets/16d5e376-b469-43b0-a2bf-c6550e3ef9d0" /
+<img width="1917" height="1022" alt="Image" src="https://github.com/user-attachments/assets/16d5e376-b469-43b0-a2bf-c6550e3ef9d0" /> 
 
 (Note: The login button won’t be available unless both fields are filled.)
 
