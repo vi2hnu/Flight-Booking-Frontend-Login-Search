@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   error:boolean = false;
   errorMessage:string = '';
   newPasswordRepeat:string = '';
+  forceChangePassword:boolean = false;
   request: ChangePassword = {
     username: '',
     oldPassword: '',
@@ -38,6 +39,12 @@ export class ProfileComponent implements OnInit {
     this.username = user.username;
     this.email = user.email;
     this.request.username = user.username;
+    if(history.state.changePassword) {
+      this.error = true;
+      this.forceChangePassword = true;
+      this.requestChangePassword = true;
+      this.errorMessage = "Due to security reasons, you must change your password before proceeding.";
+    }
   }
 
   changePassword() {

@@ -21,12 +21,16 @@ export class Login {
 
   login() {
   this.loginService.login(this.loginModel).subscribe({
-    next: () => {
+    next: (response) => {
       this.loginService
         .getUserDeatils(this.loginModel.username)
         .subscribe({
           next: (user) => {
             localStorage.setItem('user', JSON.stringify(user));
+            if(response.changePassword){
+              this.router.navigate(['/profile'],{state: {changePassword: true}});
+              return;
+            }
             const isAdmin = user.roles.some((role: any) => role.name === 'ADMIN');
             if (isAdmin) {
               this.router.navigate(['/admin/add/flight']);

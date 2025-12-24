@@ -17,6 +17,9 @@ export class TicketsComponent implements OnInit {
   errorMessage: string = '';
   lessThan24HoursError: string = '';
   errorTicketPnr: string = '';
+  pastTickets: any = [];
+  showPastTickets: boolean = false;
+  pastTicketStatus: string = 'Show';
   today:string = new Date().toISOString().split('T')[0];
 
   ngOnInit() {
@@ -28,6 +31,13 @@ export class TicketsComponent implements OnInit {
   fetchTickets() {
     this.ticketService.getHistory(this.email).subscribe({
       next: (data) => {
+        this.pastTickets = [];
+        data.forEach((element: any) => {
+          if (element.departureDate < this.today) {
+            element.status = 'Trip Completed';
+            this.pastTickets.push(element);
+          }
+        });
         this.tickets = data
           .filter((ticket: any) => ticket.departureDate >= this.today)
           .sort((a: any, b: any) => {
@@ -78,5 +88,15 @@ export class TicketsComponent implements OnInit {
 
   hidePopUp() {
     this.cancelledPnr = '';
+  }
+
+  pastTicketView() {
+    if(this.showPastTickets){
+      this.showPastTickets = false;
+      this.pastTicketStatus = 'Show';
+    } else {
+      this.showPastTickets = true;
+      this.pastTicketStatus = 'Hide';
+    }
   }
 }

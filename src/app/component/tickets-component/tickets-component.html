@@ -3,7 +3,53 @@
 
   <div class="tickets-header">
     <h2>Your Tickets</h2>
+    <button class="nav-btn" (click)="pastTicketView()">
+      {{ pastTicketStatus }} Past Tickets
+    </button>
   </div>
+
+  @if(showPastTickets){
+  @for (ticket of pastTickets; track ticket.pnr) {
+
+  <div class="ticket-card">
+
+    <div class="ticket-grid">
+
+      <div class="ticket-left">
+        <div><strong>PNR:</strong> {{ ticket.pnr }}</div>
+        <div><strong>Status:</strong> {{ ticket.status }}</div>
+        <div><strong>From:</strong> {{ ticket.fromCityId }}</div>
+        <div><strong>To:</strong> {{ ticket.toCityId }}</div>
+      </div>
+
+      <div class="ticket-right">
+        <div><strong>Date:</strong> {{ ticket.departureDate }}</div>
+        <div><strong>Time:</strong> {{ ticket.departureTime | date:'hh:mm a' }}</div>
+        <div>
+          <strong>Booked By:</strong>
+          {{ ticket.bookedByUsers.name }} ({{ ticket.bookedByUsers.email }})
+        </div>
+      </div>
+
+    </div>
+
+    <div class="passenger-section">
+      <h4>Passengers</h4>
+
+      @for (p of ticket.passengers; track p) {
+      <div class="passenger-row">
+        <span>{{ p.name }}</span>
+        <span>{{ p.gender }}</span>
+        <span>{{ p.mealOption }}</span>
+        <span>Seat {{ p.seatPosition }}</span>
+      </div>
+      }
+    </div>
+
+  </div>
+  }
+  }
+
 
   @for (ticket of tickets; track ticket.pnr) {
 
@@ -49,17 +95,17 @@
       </button>
 
       @if (cancelledPnr === ticket.pnr) {
-        <div class="popup-overlay">
-          <div class="popup-box">
-            <p>Are you sure you want to cancel ticket?</p>
-            <button class="popup-btn" (click)="cancelTicket(ticket.pnr)">Yes</button>
-            <button class="popup-btn-no" (click)="hidePopUp()">No</button>
-          </div>
+      <div class="popup-overlay">
+        <div class="popup-box">
+          <p>Are you sure you want to cancel ticket?</p>
+          <button class="popup-btn" (click)="cancelTicket(ticket.pnr)">Yes</button>
+          <button class="popup-btn-no" (click)="hidePopUp()">No</button>
         </div>
+      </div>
       }
 
       @if(errorTicketPnr === ticket.pnr && lessThan24HoursError) {
-        <p class="error-message">{{ lessThan24HoursError }}</p>
+      <p class="error-message">{{ lessThan24HoursError }}</p>
       }
     </div>
     }
