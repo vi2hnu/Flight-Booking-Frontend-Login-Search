@@ -5,9 +5,11 @@
   </div>
 
   <div class="header-actions">
-    <button class="nav-btn" (click)="routeToSearch()">Search Flights</button>
-    <button class="nav-btn" (click)="routeToTickets()">Your Tickets</button>
-    <button class="nav-btn" (click)="routeToProfile()">Profile</button>
+    @if(changePasswordRequired===false){
+      <button class="nav-btn" (click)="routeToSearch()">Search Flights</button>
+      <button class="nav-btn" (click)="routeToTickets()">Your Tickets</button>
+      <button class="nav-btn" (click)="routeToProfile()">Profile</button>
+    }
     <button class="logout-btn" (click)="logout()">Logout</button>
   </div>
 </header>

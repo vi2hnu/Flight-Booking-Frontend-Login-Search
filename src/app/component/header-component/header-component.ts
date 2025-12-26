@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Search as SearchService } from '../../service/search/search';
 import { Router } from '@angular/router'
@@ -9,11 +9,19 @@ import { Router } from '@angular/router'
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   private readonly searchService = inject(SearchService);
   private readonly router = inject(Router);
 
+  changePasswordRequired: boolean = false;
+
   constructor(private cookieService: CookieService) {
+  }
+
+  ngOnInit() {
+    if(history.state.changePassword) {
+      this.changePasswordRequired = true;
+    }
   }
 
   logout() {
