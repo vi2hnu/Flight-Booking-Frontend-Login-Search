@@ -49,29 +49,32 @@
   @if(flights.length > 0) {
     <h2 class="flights-heading">Available Flights</h2>
     <div class="flights-container">
-      @for(flight of flights; track flight.id){
+      @for(flight of flights; track flight.schedule.id){
         <div class="flight-card">
           <div class="flight-top row">
-            <p class="from-city"><strong>From:</strong> {{ flight.fromCity.cityName }} ({{ flight.fromCity.airportCode }})</p>
-            <p class="to-city"><strong>To:</strong> {{ flight.toCity.cityName }} ({{ flight.toCity.airportCode }})</p>
+            <p class="from-city"><strong>From:</strong> {{ flight.schedule.fromCity.cityName }} ({{ flight.schedule.fromCity.airportCode }})</p>
+            <p class="to-city"><strong>To:</strong> {{ flight.schedule.toCity.cityName }} ({{ flight.schedule.toCity.airportCode }})</p>
           </div>
 
           <div class="flight-airline row">
-            <p><strong>Airline:</strong> {{ flight.flight.airline.airlineName }}</p>
-            <p><strong>Flight:</strong> {{ flight.flight.name }}</p>
+            <p><strong>Airline:</strong> {{ flight.schedule.flight.airline.airlineName }}</p>
+            <p><strong>Flight:</strong> {{ flight.schedule.flight.name }}</p>
           </div>
 
           <div class="flight-middle row">
-            <p><strong>Date:</strong> {{ flight.departureDate | date:'yyyy-MM-dd' }}</p>
-            <p><strong>Dep:</strong> {{ flight.departureTime | date:'HH:mm' }} | <strong>Dur:</strong> {{ flight.duration }}m</p>
+            <p><strong>Date:</strong> {{ flight.schedule.departureDate | date:'yyyy-MM-dd' }}</p>
+            <p><strong>Dep:</strong> {{ flight.schedule.departureTime | date:'HH:mm' }} | <strong>Dur:</strong> {{ flight.schedule.duration }}m</p>
           </div>
 
           <div class="flight-bottom row">
-            <p><strong>Seats:</strong> {{ flight.seatsAvailable }}</p>
-            <p class="price"><strong>Price:</strong> Rs. {{ flight.price }}</p>
+            <p><strong>Seats:</strong> {{ flight.schedule.seatsAvailable }}</p>
+            <p class="price"><strong>Price:</strong> Rs. {{ flight.schedule.price }}</p>
           </div>
 
-          <button class="book-btn" (click)="bookTicket(flight.id,flight.toCity.cityName,flight.fromCity.cityName,flight.departureDate,flight.departureTime)">
+          <button class="book-btn" 
+          (click)="bookTicket(flight.schedule.id,flight.schedule.toCity.cityName,flight.schedule.fromCity.cityName,
+          flight.schedule.departureDate,
+          flight.schedule.departureTime,flight.schedule.flight.columns,flight.schedule.flight.rows,flight.bookedSeats)">
             Book Ticket</button>
         </div>
       }

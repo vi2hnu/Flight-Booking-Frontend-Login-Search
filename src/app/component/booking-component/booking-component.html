@@ -13,11 +13,30 @@
         </div>
     </div>
     <br>
+    <button class="nav-btn" (click)="changeSeatMapVisibility()">Show / hide seat map</button>
+    <br>
+    @if(seatMapVisible) {
+        <div class="seat-map">
+        @for (row of rowNumbers; track row) {
+            @for (col of columnLabels; track col) {
+                @if(isSeatBooked(row, col)) {
+                    <button style="margin-left:28px; cursor: not-allowed; color: red;" disabled>{{row}}{{col}}</button>
+                } @else {
+                    <button style="margin-left:28px;" (click)="selectSeat(row, col)">{{row}}{{col}}</button>
+                }
+            }
+            <br>
+        }
+    </div>
+    }
+    <br>
+    <br>
+
     <div class="booking-box">
 
         <div class="passenger-count-section">
             <label for="passengerCount">Number of Passengers</label>
-            <input type="number" id="passengerCount" [(ngModel)]="passengerCount"  (change)="generatePassengers()"/>
+            <input type="number" id="passengerCount" [(ngModel)]="passengerCount" (change)="generatePassengers()" />
         </div>
 
         @if (showForm) {
