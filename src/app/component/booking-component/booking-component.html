@@ -12,9 +12,6 @@
             <span>Departure Time: {{ departureTime }}</span>
         </div>
     </div>
-    <br>
-    <button class="nav-btn" (click)="changeSeatMapVisibility()">Show / hide seat map</button>
-    <br>
     @if(seatMapVisible) {
         <div class="seat-map">
         @for (row of rowNumbers; track row) {
@@ -59,9 +56,12 @@
                     <option value="NONVEG">Non-Veg</option>
                 </select>
 
-                <input type="text" class="seat" placeholder="Seat No." required name="passengerSeat{{i}}"
-                    [(ngModel)]="passenger.seatPos" />
-
+                @if(passenger.seatPos==='') {
+                    <button class="nav-btn" (click)="changeSeatMapVisibility()">Select a seat</button>
+                }
+                @else {
+                    <button class="nav-btn" (click)="disselectSeat(i)">{{passenger.seatPos}}</button>
+                }
             </div>
             }
 

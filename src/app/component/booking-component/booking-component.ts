@@ -109,5 +109,11 @@ export class BookingComponent implements OnInit {
       return;
     }
     passenger.seatPos = `${row}${col}`;
+    this.changeSeatMapVisibility();
+  }
+
+  disselectSeat(i: number){
+    this.passengers[i].seatPos = '';
+    this.changeSeatMapVisibility();
   }
 }
